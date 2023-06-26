@@ -1,6 +1,8 @@
 package com.example.githubtrends.data.network.utils
 
 import com.example.githubtrends.data.model.response.ApiEntry
+import com.example.githubtrends.data.utils.ItemMapper
+import com.example.githubtrends.presentation.model.UiApiEntry
 import retrofit2.Response
 
 /**
@@ -8,10 +10,10 @@ import retrofit2.Response
  */
 class ResponseConverter {
 
-    fun responseToResults(response: Response<ApiEntry>): Resource<ApiEntry> {
+    fun responseToResults(response: Response<ApiEntry>, mapper: ItemMapper): Resource<UiApiEntry> {
         if (response.isSuccessful) {
             response.body()?.let {
-                return Resource.Success(it)
+                return Resource.Success(mapper.mapToEntity(it))
             }
         }
         response.errorBody()?.let {

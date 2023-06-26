@@ -1,4 +1,4 @@
-package com.example.clothesstoreapp.ui.utils
+package com.example.githubtrends.presentation.utils
 
 import android.widget.ImageView
 import android.widget.TextView

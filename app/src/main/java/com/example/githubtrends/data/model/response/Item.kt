@@ -80,5 +80,6 @@ data class Item(
     val visibility: String,
     val watchers: Int,
     val watchers_count: Int,
-    val web_commit_signoff_required: Boolean
+    val web_commit_signoff_required: Boolean,
+    val isExpanded : Boolean = false
 )

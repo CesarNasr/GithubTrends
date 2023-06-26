@@ -9,12 +9,16 @@ import com.example.githubtrends.domain.repository.Repository
 import com.example.githubtrends.presentation.utils.ErrorType
 import com.example.githubtrends.presentation.utils.ResourcesProvider
 import com.example.githubtrends.presentation.utils.UiState
+import dagger.hilt.android.HiltAndroidApp
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import javax.inject.Inject
 
+
+@HiltViewModel
 class TrendingReposViewModel @Inject constructor(
     private val repository: Repository
 ) : ViewModel() {
