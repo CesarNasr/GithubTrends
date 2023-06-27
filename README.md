@@ -22,6 +22,7 @@ Jetpack Library
 - Data binding
 
 Architecures and patterns :
+- TDD using JUnit and Truth library
 - MVVM
 - Repository pattern
 - Dependency Injection using Dagger-Hilt, integrated with viewmodels and views(fragments and activities)
