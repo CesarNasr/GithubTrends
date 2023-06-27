@@ -27,8 +27,6 @@ class TrendingReposViewModel @Inject constructor(
     }
 
     fun fetchTrendingRepos() {
-        //_trendingReposUiState.value = UiState.Loading
-
         viewModelScope.launch {
             try {
                 when (val response = repository.fetchTrendingRepos()) {

@@ -7,8 +7,8 @@ import com.example.githubtrends.presentation.model.UiItem
 import javax.inject.Inject
 
 /**
- * Each level of our app (local data source/ remote datasource / UI) has it's own entity/ models and this class helps us map
- * them to one another
+ * Each level of our app (local data source/ remote datasource / UI) has it's own entity/ models and this class helps to map
+ * them to one another, to make sure that each layer is independent
  */
 class ItemMapper @Inject constructor() : EntityMapper<UiApiEntry, ApiEntry> {
 

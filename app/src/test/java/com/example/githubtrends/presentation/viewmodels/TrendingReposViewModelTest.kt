@@ -1,5 +1,6 @@
 package com.example.githubtrends.presentation.viewmodels
 
+import android.annotation.SuppressLint
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.MainCoroutineRule
 import com.example.githubtrends.presentation.utils.UiState
@@ -17,6 +18,10 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
+/**
+ * Manually mocked the repository implementation in order to test the repo response, data mapping, and viewmodel states
+ * Could have also used Mockito for more sophisticated classes to mock (ex: mocking retrofit instances, etc..)
+ * */
 
 @ExperimentalCoroutinesApi
 class TrendingReposViewModelTest {
@@ -25,8 +30,7 @@ class TrendingReposViewModelTest {
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
     @get:Rule
-    var mainCoroutineRule =
-        MainCoroutineRule()  // Might be used when calling Dispatchers.Main in viewmodel
+    var mainCoroutineRule = MainCoroutineRule()  // Might be used when calling Dispatchers.Main in viewmodel
 
     private lateinit var viewModel: TrendingReposViewModel
     private lateinit var mockRepository: MockRepositoryImpl
@@ -38,6 +42,7 @@ class TrendingReposViewModelTest {
     }
 
 
+    @SuppressLint("CheckResult")
     @Test
     fun `fetch trending repos returns success`() {
         mockRepository.setShouldReturnNetworkError(MockErrorType.None)
@@ -49,6 +54,7 @@ class TrendingReposViewModelTest {
     }
 
 
+    @SuppressLint("CheckResult")
     @Test
     fun `fetch trending repos returns internet error`() {
         mockRepository.setShouldReturnNetworkError(MockErrorType.InternetError)
@@ -60,6 +66,7 @@ class TrendingReposViewModelTest {
     }
 
 
+    @SuppressLint("CheckResult")
     @Test
     fun `fetch trending repos returns other error`() {
         mockRepository.setShouldReturnNetworkError(MockErrorType.Others)

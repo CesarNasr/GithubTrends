@@ -6,7 +6,7 @@ import com.example.githubtrends.presentation.model.UiApiEntry
 import retrofit2.Response
 
 /**
- * Responsible for converting api response to resource class
+ * Responsible for converting api response to custom resource class
  */
 class ResponseConverter {
 
