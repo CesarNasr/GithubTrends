@@ -14,6 +14,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:background="@color/bg_primary_color"
         android:layout_height="wrap_content"
         android:paddingBottom="10dp">
 
@@ -31,9 +32,11 @@
         <TextView
             android:id="@+id/repo_name_text"
             android:layout_width="wrap_content"
+
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:text="@{item.repoName}"
+            android:textColor="@color/text_color"
             app:layout_constraintStart_toEndOf="@id/avatar_image"
             app:layout_constraintTop_toTopOf="@id/avatar_image"
             tools:text="repo name" />
@@ -45,6 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:text="@{item.name}"
+            android:textColor="@color/text_color"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/avatar_image"
@@ -67,7 +71,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@{item.description}"
+                android:textColor="@color/text_color"
                 android:textSize="15sp"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -90,6 +96,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:text="@{item.language}"
+
+                android:textColor="@color/text_color"
                 app:layout_constraintBottom_toBottomOf="@id/circle_image"
                 app:layout_constraintStart_toEndOf="@+id/circle_image"
                 app:layout_constraintTop_toTopOf="@id/circle_image"
@@ -112,6 +120,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:text="@{Integer.toString(item.stars)}"
+                android:textColor="@color/text_color"
                 app:layout_constraintBottom_toBottomOf="@id/star_image"
                 app:layout_constraintStart_toEndOf="@id/star_image"
                 app:layout_constraintTop_toTopOf="@id/star_image"

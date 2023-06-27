@@ -9,7 +9,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_margin="20dp"
-        android:backgroundTint="@color/light_grey"
+        android:backgroundTint="@color/separator_color"
         app:cardCornerRadius="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -18,7 +18,7 @@
         android:layout_width="100dp"
         android:layout_height="10dp"
         android:layout_marginStart="20dp"
-        android:backgroundTint="@color/light_grey"
+        android:backgroundTint="@color/separator_color"
         app:cardCornerRadius="10dp"
         app:layout_constraintStart_toEndOf="@id/circular_view"
         app:layout_constraintTop_toTopOf="@id/circular_view" />
@@ -30,7 +30,7 @@
         android:layout_height="10dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="50dp"
-        android:backgroundTint="@color/light_grey"
+        android:backgroundTint="@color/separator_color"
         app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="@id/circular_view"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="30dp"
-        android:background="@color/light_grey"
+        android:background="@color/separator_color"
         app:layout_constraintTop_toBottomOf="@+id/lower_placeholder" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
