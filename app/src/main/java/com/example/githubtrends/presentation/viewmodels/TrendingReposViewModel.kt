@@ -2,14 +2,10 @@ package com.example.githubtrends.presentation.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.githubtrends.R
-import com.example.githubtrends.data.model.response.ApiEntry
 import com.example.githubtrends.data.network.utils.Resource
 import com.example.githubtrends.domain.repository.Repository
 import com.example.githubtrends.presentation.utils.ErrorType
-import com.example.githubtrends.presentation.utils.ResourcesProvider
 import com.example.githubtrends.presentation.utils.UiState
-import dagger.hilt.android.HiltAndroidApp
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

@@ -8,12 +8,5 @@
          <item name="colorAccent">#000000</item>
         <item name="android:textColorPrimary">#000000</item>
 
-<!--
-        <attr format="color" name="colorControlNormal"/>
-
-
-        <attr format="color" name="colorControlActivated"/>-->
-
-
     </style>
 </resources>
