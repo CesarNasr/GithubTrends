@@ -39,14 +39,19 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <include
-            android:id="@+id/error_view"
-            layout="@layout/error_layout"
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="@{viewModel.trendingReposUiState instanceof UiState.Error ? View.VISIBLE  : View.GONE, default=gone}"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+            <include
+                android:id="@+id/error_view"
+                layout="@layout/error_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="@{viewModel.trendingReposUiState instanceof UiState.Error ? View.VISIBLE  : View.GONE, default=gone}"
+       />
+        </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
