@@ -7,6 +7,7 @@ import com.example.githubtrends.data.model.response.ApiEntry
 import com.example.githubtrends.data.network.utils.ResponseConverter
 import com.example.githubtrends.data.repositoryimpl.MockErrorType
 import com.example.githubtrends.data.repositoryimpl.MockRepositoryImpl
+import com.example.githubtrends.data.utils.ItemMapper
 import com.example.githubtrends.domain.repository.Repository
 import com.example.githubtrends.presentation.utils.ErrorType
 import com.example.githubtrends.presentation.utils.ResourcesProvider
@@ -32,7 +33,7 @@ class TrendingReposViewModelTest {
 
     @Before
     fun setup() {
-        mockRepository = MockRepositoryImpl(ResponseConverter())
+        mockRepository = MockRepositoryImpl(ResponseConverter(), ItemMapper())
         viewModel = TrendingReposViewModel(mockRepository)
     }
 
