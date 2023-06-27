@@ -11,13 +11,8 @@ import com.example.githubtrends.presentation.model.UiItem
 class ReposAdapter : ListAdapter<UiItem, ReposViewHolder>(ItemDiffCallBack()) {
     private fun getList(): List<UiItem> = currentList
     fun setList(list: MutableList<UiItem>) {
+        list.first().isExpanded = true
         submitList(list)
-    }
-
-
-    private var onItemClickListener: ((UiItem) -> Unit)? = null
-    fun setOnItemClickListener(listener: (UiItem) -> Unit) {
-        onItemClickListener = listener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReposViewHolder {
@@ -34,7 +29,9 @@ class ReposAdapter : ListAdapter<UiItem, ReposViewHolder>(ItemDiffCallBack()) {
 
 
     override fun onBindViewHolder(holder: ReposViewHolder, position: Int) {
-        holder.bind(currentList[position], onItemClickListener)
+        holder.bind(currentList[position]) {
+            notifyItemChanged(position)
+        }
     }
 }
 
@@ -46,6 +43,7 @@ class ReposViewHolder(private val binding: RepoListItemBinding) :
         binding.executePendingBindings()
 
         binding.root.setOnClickListener {
+            item.isExpanded = !item.isExpanded
             onItemClickListener?.invoke(item)
         }
     }

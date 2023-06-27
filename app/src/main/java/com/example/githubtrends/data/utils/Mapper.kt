@@ -22,11 +22,12 @@ class ItemMapper @Inject constructor() : EntityMapper<UiApiEntry, ApiEntry> {
     private fun mapToEntityList(entities: List<Item>): List<UiItem> {
         return entities.map {
             UiItem(
-                name = it.owner.login,
-                repoName = it.name,
-                description = it.description,
-                language = it.language,
-                stars = it.stargazers_count
+                name = it.owner?.login ?: "",
+                repoName = it.name ?: "",
+                description = it.description ?: "",
+                language = it.language ?: "",
+                stars = it.stargazers_count ?: 0,
+                avatarUrl = it.owner?.avatar_url ?: ""
             )
         }
     }

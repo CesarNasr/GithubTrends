@@ -8,5 +8,6 @@ data class UiItem(
     val description: String,
     val language: String,
     val stars: Int,
+    val avatarUrl : String,
     var isExpanded: Boolean = false
 )

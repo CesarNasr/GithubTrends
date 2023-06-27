@@ -10,5 +10,6 @@ import com.bumptech.glide.Glide
 fun setImageFromURL(imageView: ImageView, url: String?) {
     Glide.with(imageView.context)
         .load(url)
+        .circleCrop()
         .into(imageView)
 }

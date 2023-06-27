@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <import type="android.view.View" />
+
         <variable
             name="item"
             type="com.example.githubtrends.presentation.model.UiItem" />
@@ -9,7 +14,110 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp">
+
+        <ImageView
+            android:id="@+id/avatar_image"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            app:imageURL="@{item.avatarUrl}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_launcher_background" />
+
+        <TextView
+            android:id="@+id/repo_name_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="@{item.repoName}"
+            app:layout_constraintStart_toEndOf="@id/avatar_image"
+            app:layout_constraintTop_toTopOf="@id/avatar_image"
+            tools:text="repo name" />
+
+
+        <TextView
+            android:id="@+id/login_name_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="@{item.name}"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/avatar_image"
+            app:layout_constraintStart_toEndOf="@id/avatar_image"
+            tools:text="Login name" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="25dp"
+            android:visibility="@{item.isExpanded ?  View.VISIBLE  : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/login_name_text"
+            app:layout_constraintTop_toBottomOf="@id/login_name_text">
+
+            <TextView
+                android:id="@+id/description_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{item.description}"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Description goes here" />
+
+
+            <ImageView
+                android:id="@+id/circle_image"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/ic_circle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/description_text" />
+
+
+            <TextView
+                android:id="@+id/language_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="@{item.language}"
+                app:layout_constraintBottom_toBottomOf="@id/circle_image"
+                app:layout_constraintStart_toEndOf="@+id/circle_image"
+                app:layout_constraintTop_toTopOf="@id/circle_image"
+                tools:text="language" />
+
+
+            <ImageView
+                android:id="@+id/star_image"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="30dp"
+                android:src="@drawable/ic_star"
+                app:layout_constraintBottom_toBottomOf="@id/circle_image"
+                app:layout_constraintStart_toEndOf="@id/language_text"
+                app:layout_constraintTop_toTopOf="@id/circle_image" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="@{Integer.toString(item.stars)}"
+                app:layout_constraintBottom_toBottomOf="@id/star_image"
+                app:layout_constraintStart_toEndOf="@id/star_image"
+                app:layout_constraintTop_toTopOf="@id/star_image"
+                tools:text="56" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -23,14 +23,17 @@ class TrendingReposViewModel @Inject constructor(
     private val repository: Repository
 ) : ViewModel() {
 
-    private val _trendingReposUiState = MutableStateFlow<UiState>(UiState.Empty)
+    private val _trendingReposUiState = MutableStateFlow<UiState>(UiState.Loading)
     val trendingReposUiState: StateFlow<UiState> = _trendingReposUiState
 
+    init {
+        fetchTrendingRepos()
+    }
+
     fun fetchTrendingRepos() {
-        _trendingReposUiState.value = UiState.Loading
+        //_trendingReposUiState.value = UiState.Loading
 
         viewModelScope.launch {
-
             try {
                 when (val response = repository.fetchTrendingRepos()) {
                     is Resource.Success -> {
