@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:shimmer="http://schemas.android.com/apk/res-auto">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.example.githubtrends.presentation.utils.UiState" />
+
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.example.githubtrends.presentation.viewmodels.TrendingReposViewModel" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -7,17 +19,36 @@
         android:layout_height="match_parent"
         tools:context=".presentation.ui.TrendingReposFragment">
 
+        <include
+            android:id="@+id/toolbar_layout"
+            layout="@layout/toolbar_layout" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/repos_recyclerview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone"
+            android:layout_height="0dp"
+            android:visibility="@{viewModel.trendingReposUiState instanceof UiState.Loaded ? View.VISIBLE  : View.GONE, default=gone}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_layout"
             tools:listitem="@layout/repo_list_item" />
 
         <include
             android:id="@+id/shimmer_view"
             layout="@layout/shimmer_layout"
-            android:visibility="visible" />
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="@{viewModel.trendingReposUiState instanceof UiState.Loading ? View.VISIBLE  : View.GONE, default=visible}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_layout" />
+
+        <include
+            android:id="@+id/error_view"
+            layout="@layout/error_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.trendingReposUiState instanceof UiState.Error ? View.VISIBLE  : View.GONE, default=gone}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_layout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

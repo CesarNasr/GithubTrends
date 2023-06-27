@@ -40,6 +40,8 @@ class TrendingReposFragment : Fragment() {
     ): View? {
 
         binding = FragmentTrendingReposBinding.inflate(inflater, container, false)
+        binding.viewModel = viewModel
+        binding.errorView.viewModel = viewModel
         binding.lifecycleOwner = this
         binding.executePendingBindings()
 
@@ -67,17 +69,12 @@ class TrendingReposFragment : Fragment() {
             mLayoutManager.orientation
         )
         binding.reposRecyclerview.addItemDecoration(dividerItemDecoration)
-
-
-        /*  newsAdapter.setOnItemClickListener {
-                    //do something
-
-                    navigateToNewsDetailsFragment(it)
-                }*/
     }
 
 
     private fun collectUiStates() {
+        // PS: In this function, I kept some commented code to show that we can handle such events/callbacks either through data binding or programatically
+
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
 
@@ -85,9 +82,8 @@ class TrendingReposFragment : Fragment() {
                     viewModel.trendingReposUiState.collect { uiState ->
                         when (uiState) {
                             is UiState.Loaded -> {
-                                binding.reposRecyclerview.visibility = View.VISIBLE
+                                // binding.reposRecyclerview.visibility = View.VISIBLE
                                 toggleShimmerLayout(false)
-
 
                                 uiState.itemData?.items?.let { items ->
                                     reposAdapter.setList(items.toMutableList())
@@ -96,14 +92,14 @@ class TrendingReposFragment : Fragment() {
 
                             is UiState.Error -> {
                                 if (uiState.error?.name == ErrorType.InternetError.name) {
-
+                                    //do something
                                 } else {
-
+                                    //do something
                                 }
                             }
 
                             UiState.Loading -> {
-                                binding.reposRecyclerview.visibility = View.GONE
+                                //binding.reposRecyclerview.visibility = View.GONE
                                 toggleShimmerLayout(true)
                             }
                         }
@@ -115,8 +111,9 @@ class TrendingReposFragment : Fragment() {
     }
 
     private fun toggleShimmerLayout(show: Boolean) {
-        binding.shimmerView.shimmerViewContainer.isVisible = show
-        if (show) binding.shimmerView.shimmerViewContainer.startShimmer() else binding.shimmerView.shimmerViewContainer.stopShimmer()
+        // binding.shimmerView.shimmerViewContainer.isVisible = show
+        if (show) binding.shimmerView.shimmerViewContainer.startShimmer()
+        else binding.shimmerView.shimmerViewContainer.stopShimmer()
     }
 
 

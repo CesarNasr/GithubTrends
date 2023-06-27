@@ -4,4 +4,8 @@
     <string name="check_internet_connection">Please check you internet connection</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="retry">Retry</string>
+    <string name="error_description">An alien is probably blocking your signal</string>
+    <string name="error_title">Something went wrong..</string>
+    <string name="trending">Trending</string>
 </resources>
